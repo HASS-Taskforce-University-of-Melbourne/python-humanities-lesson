@@ -25,7 +25,7 @@ We can automate the process above using Python. It's efficient to spend time
 building the code to perform these tasks because once it's built, we can use it
 over and over on different datasets that use a similar format. This makes our
 methods easily reproducible. We can also easily share our code with colleagues
-and they can replicate the same analysis.
+and they can replicate the same analysis.Python is a general purpose programming language that is useful for writing scripts to work effectively and reproducibly with data.Python is a general purpose programming language that is useful for writing scripts to work effectively and reproducibly with data.Python is a general purpose programming language that is useful for writing scripts to work effectively and reproducibly with data.Python is a general purpose programming language that is useful for writing scripts to work effectively and reproducibly with data.Python is a general purpose programming language that is useful for writing scripts to work effectively and reproducibly with data.
 
 ### Starting in the same spot
 
