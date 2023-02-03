@@ -7,7 +7,7 @@ questions:
     - " What is Pandas?"
     - " Why should I use Pandas to work with data?"
 objectives:
-    - "Navigate the workshop directory and download a dataset."
+    - "Download a dataset from an URL address"
     - "Explain what a library is and what libraries are used for."
     - "Describe what the Python Data Analysis Library (Pandas) is."
     - "Load the Python Data Analysis Library (Pandas)."
@@ -15,24 +15,23 @@ objectives:
     - "Describe what a DataFrame is in Python."
     - "Access and summarize data stored in a DataFrame."
     - "Define indexing as it relates to data structures."
-    - "Perform basic mathematical operations and summary statistics on data in a Pandas DataFrame."
+    - "Perform basic summary statistics on data in a Pandas DataFrame."
     - "Create simple plots."
 ---
 
 # Working With Pandas DataFrames in Python
 
-We can automate the processes listed above using Python. It is efficient to spend time
+We can automate the processes of downloading and importing data files using Python. It is efficient to spend time
 building code to perform these tasks because once it is built, we can use our code
-over and over on different datasets that share a similar format. This makes our
+over and over on different files that share a similar format. This makes our
 methods easily reproducible. We can also share our code with colleagues
 so they can replicate our analysis.
 
 ### Starting in the same spot
 
-To help the lesson run smoothly, let's ensure everyone is in the same directory.
-This should help us avoid path and file name issues. At this time please
-navigate to the workshop directory. If you working in IPython Notebook be sure
-that you start your notebook in the workshop directory.
+To help the lesson run smoothly, we are downloading an example data file from a URL address.
+If running Python on your computer, make sure that the data file is in the same directory from which you launch Jypyter Notebooks.
+This should help us avoid path and file name issues. 
 
 A quick aside that there are Python libraries like [OS
 Library](https://docs.python.org/3/library/os.html) that can work with our
@@ -40,11 +39,11 @@ directory structure, however, that is not our focus today.
 
 ### Alex's Processing
 
-Alex is a researcher who is interested in Early English books. Alex knows the EEBO dataset and refers to it to find data such as titles, places, and authors. As well as searching for titles, they want to create some exploratory plots and intermediate datasets. 
+Alex is a researcher who is interested in Early English books. Alex knows the EEBO dataset and refers to it to find data such as titles, places, and authors. As well as searching for titles, Alex wants to create some exploratory plots and intermediate datasets from the raw data. 
 
-Alex can do some of this work using spreadsheet systems but this can be time consuming to do  and revise. It can lead to mistakes that are hard to detect. 
+Alex can do some of this work using spreadsheet systems but this can be time consuming to do and revise. It can lead to mistakes that are hard to detect. 
 
-The next steps show how Python can be used to automate some of the processes. 
+The next steps show how Python can be used to automate some of these processes. 
 
 As a result of creating Python scripts, the data can be re-run in the future. 
 
@@ -54,10 +53,10 @@ For this lesson, we will be using the EEBO catalogue data, a subset of the data
 from EEBO/TCP
 [Early English Books Online/Text Creation Partnership](https://eebo.chadwyck.com/home)
 
-We will be using files from the data folder.
-This section will use the `eebo.csv` file that can be found in your data folder.
+We will be downloading files from a remote location identifiable by an URL address.
+This section will use the `eebo.csv` file that can be found at https://raw.githubusercontent.com/carpentries-incubator/python-humanities-lesson/gh-pages/data/eebo.csv 
 
-We are studying the authors and titles published marked up by the Text Creation Partnership. The dataset is stored as a comma separated (`.csv`) file, where each row holds information for a single title, and the columns represent diferent aspects (variables) of each entry:
+We are studying a simple database containing the authors and titles of works marked up by the Text Creation Partnership. The dataset is stored as a comma separated (`.csv`) file, where each row holds information for a single title, and the columns represent diferent aspects (variables) of each entry. The **codebook** (often read.me file) accompanying the data give us a description of the variables (features) included in our data file.
 
 | Column           | Description                                     |
 |------------------|-------------------------------------------------|
@@ -73,7 +72,7 @@ We are studying the authors and titles published marked up by the Text Creation 
 | Page Count       | Number of pages in the text                     |
 | Place            | Location where the work was published           |
 
-If we open the `eebo.csv` data file using a text editor, the first few rows of our first file look like this:
+If we open the `eebo.csv` data file with [our browser](https://raw.githubusercontent.com/carpentries-incubator/python-humanities-lesson/gh-pages/data/eebo.csv) or using a text editor, the first few rows of our first file look like this:
 
 ```
 TCP,EEBO,VID,STC,Status,Author,Date,Title,Terms,Page Count,Place
@@ -90,49 +89,76 @@ A00018,99850740,15965,STC 10015; ESTC S115521,Free,,1558,The lame[n]tacion of En
 ---
 
 ## About Libraries
-A library in Python contains a set of tools (functions) that perform different
-actions on our data. Importing a library is like getting a set of particular tools
-out of a storage locker and setting them up on the bench for use in a project.
+As mentioned in the first session of our workshop, Python library contains a large set of functions that can perform different
+actions on our data. Importing a library is like getting a new set of tools
+out of a storage locker and setting them up on the bench for use in a particular project. Note that not all projects require the same libraries.   
 Once a library is set up, its functions can be used or called to perform different tasks.
+
+Python doesn't load all of the libraries available to it by default to save memory and diskspace. Therefore, we have to have to
+add an `import` statement to our code in order to use the specific library functions required for our project. 
+
+To import a library, we use the syntax `import libraryName`, where `libraryName` represents the name of the specific library we want to use. Moreover, if we want to give the library a nickname to shorten the command, we can add `as nickNameHere` following the import command. We saw this command in action on the previous session when loading the Numpy library:
+
+```python
+import numpy as np
+```
+
+Note that the `import` command calls a library that has been installed previously in our system. If we use the `import` command to call for a library that does not exist in our local system, using this command will throw back an and error when executed. In this case, you can use the  `pip` command in another terminal window to install the missing libraries. [See here for details](https://github.com/resbaz/Intro_Python_Nov2017/blob/master/Python_Installation.md) on how to do this. 
+
+If using Jupyter Notebooks in Colab you can execute the following line on an empty code cell to import any Python library:
+
+``` python
+!pip install libraryname
+```
+If the requested library is already installed, Python will let you know this by returning the version number of the installed library. You can always verfy if Colab has already access to a library by typing
+
+```python
+!pip freeze
+```
+This command will return all libraries available to Colab at the time of execution.
 
 ## Pandas in Python
 One of the best options for working with tabular data in Python is to use the
 [Python Data Analysis Library](http://pandas.pydata.org/) (a.k.a. Pandas Library). The
 Pandas library provides structures to sort our data, can produce high quality plots in conjunction with other libraries such as
 [matplotlib](http://matplotlib.org/), and integrates nicely with libraries
-that use [NumPy](http://www.numpy.org/) (which is another common Python library) arrays.
+that use [NumPy](http://www.numpy.org/) (which is another common Python library) numerical arrays.
 
-Python doesn't load all of the libraries available to it by default. We have to
-add an `import` statement to our code in order to use library functions required for our project. To import
-a library, we use the syntax `import libraryName`, where `libraryName` represents the name of the specific library we want to use. Note that the `import` command calls a library that has been installed previously in our system. If we use the `import` command to call for a library that does not exist in our local system, the command will throw and error when executed. In this case, you can use `pip` command in another termina window to install the missing libraries. [See here for details](https://github.com/resbaz/Intro_Python_Nov2017/blob/master/Python_Installation.md) on how to do this.
-
-Moreover, if we want to give the
-library a nickname to shorten the command, we can add `as nickNameHere`.  An
-example of importing the pandas library using the common nickname `pd` is:
-
+To call the Pandas libraries with its common `pd` alias we type
 
 ```python
 import pandas as pd
 ```
+on an empty code cell.
 
+# Using library functions
 Each time we call a function that's in a library, we use the syntax
 `LibraryName.FunctionName`. Adding the library name with a `.` before the
 function name tells Python where to find the function. In the example above, we
-have imported Pandas as `pd`. This means we don't have to type out `pandas` each
-time we call a Pandas function.
+have imported Pandas with the alias `pd`. This means we don't have to type out `pandas` each
+time we call a Pandas' function.
 
 
 # Reading CSV Data Using Pandas
 
-We will begin by locating and reading our survey data which are in CSV format.
+We will begin by locating and reading our data which are in CSV format.
 We can use Pandas' `read_csv` function to pull either a local (a file in our machine) or a remote (one that is available for downloading from the web) file into a Pandas table or
 [DataFrame](http://pandas.pydata.org/pandas-docs/stable/dsintro.html#dataframe).
 
-In order to read data in, we need to know where the data is stored on your computer or its URL address if the file is available on the web.
+In order to read the data in, we need to know either where the data is stored in your computer or its URL address if the file is available on the web.
 It is recommended to place the data files in the same directory as the Jupyter notebook if working with local files
 
+To fetch a .csv file from the web we type:
+
 ```python
-# note that pd.read_csv is used because we imported pandas as pd
+url = "https://raw.githubusercontent.com/carpentries-incubator/python-humanities-lesson/gh-pages/data/eebo.csv" #Saves the database URL as a string variable
+pd.read_csv(url)
+```
+Note that we could have achieved exactly the same by feeding the URL address as a string directly to the `pd.read_csv` command `pd.read_csv("https://raw.githubusercontent.com/carpentries-incubator/python-humanities-lesson/gh-pages/data/eebo.csv")
+
+If reading a  file located in the same directory used to call Jupyter Notebooks, you still use the `pd.read_csv' command but include the file's name (including its full directory path if needed) rather than its URL address.
+
+```python
 # note that this assumes that the data file is in the same location
 # as the Jupyter notebook
 pd.read_csv("eebo.csv")
@@ -149,7 +175,7 @@ an element in the data structure.
 
 
 
-In a terminal window the above command yields the **output** below. However, the output may differ slightly if using Jupyter Notebooks:
+In a terminal window the above command yields the **output** below. However, this output may differ slightly if using Jupyter Notebooks:
 
 ```
           TCP        EEBO     VID  \
@@ -180,7 +206,7 @@ eebo_df = pd.read_csv("eebo.csv")
 ```
 
 Notice that when you assign the imported DataFrame to a variable, Python does not
-produce any output on the screen. We can print the value of the `eebo_df`
+produce an output on the screen. We can print the value of the `eebo_df`
 object by typing its name into the Python command prompt.
 
 ```python
@@ -224,19 +250,17 @@ Place       object
 dtype: object
 ```
 
-We'll talk a bit more about what the different formats mean in a different lesson.
-
 ### Useful Ways to View DataFrame objects in Python
 
-We can use attributes and methods provided by the DataFrame object to summarize and access the data stored in it.
+We can use attributes and methods provided by the DataFrame object to summarize and access the data stored in it. Just as a reminder, **attributes** are characteristics of the dataframe as for example its number of rows whilst **methods** are functions that can be actioned on the dataframe itself. Often methods require parameters, as functions, whilst attributes do not.
 
-To access an attribute, use the DataFrame object name followed by the attribute
+To access an attribute, use the DataFrame object name followed by a dot `.` and the attribute
 name `df_object.attribute`. For example, we can access the [Index object](https://pandas.pydata.org/docs/reference/indexing.html) containing the column names of `eebo_df` by using its `columns` attribute 
 
 ```python
 eebo_df.columns
 ```
-As we will see later, we can use the contents of the Index object to extract (slice) specific records from our DataFrame based on their values.
+As we will see later, we can use the contents of the Index object to extract (slice) records from our DataFrame based on their particular values.
 
 Methods are called by using the syntax `df_object.method()`. Note the inclusion of open brackets at the end of the method. Python treats methods as **functions** associated with a dataframe rather than just a property of the object as with attributes. Similarly to functions, methods can include optional parameters inside the brackets to change their default behaviour.
 
@@ -244,7 +268,7 @@ As an example, `eebo_df.head()` gets the first few rows in the DataFrame
 `eebo_df` using **the `head()` method**. With a method, we can supply extra
 information within the open brackets to control its behaviour.
 
-Let's look at the data using these.
+Let's look at the data using this method.
 
 > ## Challenge - DataFrames
 >
