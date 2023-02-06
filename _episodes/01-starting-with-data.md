@@ -154,9 +154,9 @@ To fetch a .csv file from the web we type:
 url = "https://raw.githubusercontent.com/carpentries-incubator/python-humanities-lesson/gh-pages/data/eebo.csv" #Saves the database URL as a string variable
 pd.read_csv(url)
 ```
-Note that we could have achieved exactly the same by feeding the URL address as a string directly to the `pd.read_csv` command `pd.read_csv("https://raw.githubusercontent.com/carpentries-incubator/python-humanities-lesson/gh-pages/data/eebo.csv")
+Note that we could have achieved exactly the same by feeding the URL address as a string directly to the `pd.read_csv` command `pd.read_csv("https://raw.githubusercontent.com/carpentries-incubator/python-humanities-lesson/gh-pages/data/eebo.csv")`
 
-If reading a  file located in the same directory used to call Jupyter Notebooks, you still use the `pd.read_csv' command but include the file's name (including its full directory path if needed) rather than its URL address.
+If reading a  file located in the same directory used to call Jupyter Notebooks, you still use the `pd.read_csv' command but you must include the file's name (including its full directory path if needed) rather than its URL address.
 
 ```python
 # note that this assumes that the data file is in the same location
@@ -254,8 +254,7 @@ dtype: object
 
 We can use attributes and methods provided by the DataFrame object to summarize and access the data stored in it. Just as a reminder, **attributes** are characteristics of the dataframe as for example its number of rows whilst **methods** are functions that can be actioned on the dataframe itself. Often methods require parameters, as functions, whilst attributes do not.
 
-To access an attribute, use the DataFrame object name followed by a dot `.` and the attribute
-name `df_object.attribute`. For example, we can access the [Index object](https://pandas.pydata.org/docs/reference/indexing.html) containing the column names of `eebo_df` by using its `columns` attribute 
+To access an attribute, input the DataFrame object name followed by a dot `.` and the name of the attribute you are inquiring `df_object.attribute`. For example, we can access the [Index object](https://pandas.pydata.org/docs/reference/indexing.html) containing the column names of `eebo_df` by using its `columns` attribute 
 
 ```python
 eebo_df.columns
@@ -370,8 +369,8 @@ eebo_df['Page Count'].count()
 ```
 
 But if we want to summarize by one or more variables, for example author or publication date, we can
-use the **`.groupby` method**. When executed, this method creates a DataFrameGroupBy object containing a subset of the original DataFrame. Once we've created it, we
-can quickly calculate summary statistics by a group of our choice. For example the following code will group our data by place of publication.
+use the **`.groupby` method**. When executed, this method creates a new DataFrameGroupBy object containing a subset of the original DataFrame. Once we've created it, we
+can quickly calculate summary statistics by a group of our choice. For example, the following code will group our data by place of publication.
 
 ```python
 # Group data by status
