@@ -477,7 +477,7 @@ date_count = eebo_df.groupby("Date")["Status"].count()
 date_count.plot(kind="bar")
 ```
 
-![Weight by Species Plot](../fig/01_weight_by_date.png)
+![Weight by Species Plot](python_humanities_pandas_fig.png)
 
 What does this graph show? Let's step through
 * `eebo_df.groupby("Date")` : This groups the texts by the date in which they
