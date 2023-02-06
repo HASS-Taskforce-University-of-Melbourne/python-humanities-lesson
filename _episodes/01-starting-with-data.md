@@ -368,9 +368,13 @@ eebo_df['Page Count'].std()
 eebo_df['Page Count'].count()
 ```
 
-But if we want to summarize by one or more variables, for example author or publication date, we can
-use the **`.groupby` method**. When executed, this method creates a new DataFrameGroupBy object containing a subset of the original DataFrame. Once we've created it, we
-can quickly calculate summary statistics by a group of our choice. For example, the following code will group our data by place of publication.
+
+If you want to simplify your data and make it easier to understand, you can use something called the **`.groupby` method**.
+It takes all the information in your data and groups it together based on one or more things, like the author or the date it was published.
+When you run the **`.groupby` method**, it makes a special kind of table that only has the information you want to focus on. 
+Then, you can use this table to see things like how many books were written by each author or how many books were published in a certain year.
+Once we've created it, we can quickly calculate summary statistics by a group of our choice. 
+For example, the following code will group our data by place of publication.
 
 ```python
 # Group data by status
