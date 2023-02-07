@@ -103,7 +103,7 @@ To import a library, we use the syntax `import libraryName`, where `libraryName`
 import numpy as np
 ```
 
-Note that the `import` command calls a library that has been installed previously in our system. If we use the `import` command to call for a library that has not been installed in our local system, using this command will throw back an and error when executed. In this case, you can launch another terminal window and use the  `pip` command to install the missing libraries. [See here for details](https://github.com/resbaz/Intro_Python_Nov2017/blob/master/Python_Installation.md) on how to do this. 
+Note that the `import` command calls a library that has been installed previously in our system. If we use the `import` command to call for a library that has not been installed in our local system, it will raise an error. In this case, you can launch another terminal window and use the  `pip` command to install the missing libraries. [See here for details](https://github.com/resbaz/Intro_Python_Nov2017/blob/master/Python_Installation.md) on how to do this. 
 
 If using Jupyter Notebooks in Colab you can execute the following line on an empty code cell to import any Python library:
 
@@ -145,8 +145,8 @@ We will begin by locating and reading our data which are in CSV format.
 We can use Pandas' `read_csv` function to pull either a local (a file in our machine) or a remote (one that is available for downloading from the web) file into a Pandas table or
 [DataFrame](http://pandas.pydata.org/pandas-docs/stable/dsintro.html#dataframe).
 
-In order to read the data in, we need to know either where the data is stored in your computer or its URL address if the file is available on the web.
-It is recommended to place the data files in the same directory as the Jupyter notebook if working with local files
+In order to read the data in, we need to know either where the data is stored in your computer, or its URL address if the file is available on the web.
+It is recommended to put the data files in the same directory as the Jupyter notebook if working with local files
 
 To fetch a .csv file from the web we type:
 
@@ -217,9 +217,9 @@ which prints contents like above
 
 ## Manipulating Our Index Data
 
-Now we can start manipulating our data. First, let's check the data type of the
-data stored in `eebo_df` using the `type` method. **The `type` method and
-`__class__` attribute** tell us that `eebo_df` is `<class 'pandas.core.frame.DataFrame'>`.
+Now we can start manipulating our data. First, let's check the type of the
+data stored in teh variable `eebo_df` using the `type` function. **The `type` function and
+`__class__` attribute** of the Dataframe tell us that `eebo_df` is `<class 'pandas.core.frame.DataFrame'>`.
 
 ```python
 type(eebo_df)
