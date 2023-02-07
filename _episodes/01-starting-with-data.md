@@ -94,8 +94,8 @@ actions on our data. Importing a library is like getting a new set of tools
 out of a storage locker and setting them up on the bench for use in a particular project. Note that not all projects require the same libraries.   
 Once a library is set up, its functions can be used or called to perform different tasks.
 
-Python doesn't load all of the libraries available to it by default to save memory and diskspace. Therefore, we have to have to
-add an `import` statement to our code in order to use the specific library functions required for our project. 
+Python doesn't load all libraries available to it by default to save memory and diskspace. Therefore, we have to 
+add an `import` statement to our code in order to load the specific library functions required for our project. 
 
 To import a library, we use the syntax `import libraryName`, where `libraryName` represents the name of the specific library we want to use. Moreover, if we want to give the library a nickname to shorten the command, we can add `as nickNameHere` following the import command. We saw this command in action on the previous session when loading the Numpy library:
 
@@ -103,7 +103,7 @@ To import a library, we use the syntax `import libraryName`, where `libraryName`
 import numpy as np
 ```
 
-Note that the `import` command calls a library that has been installed previously in our system. If we use the `import` command to call for a library that does not exist in our local system, using this command will throw back an and error when executed. In this case, you can use the  `pip` command in another terminal window to install the missing libraries. [See here for details](https://github.com/resbaz/Intro_Python_Nov2017/blob/master/Python_Installation.md) on how to do this. 
+Note that the `import` command calls a library that has been installed previously in our system. If we use the `import` command to call for a library that has not been installed in our local system, using this command will throw back an and error when executed. In this case, you can launch another terminal window and use the  `pip` command to install the missing libraries. [See here for details](https://github.com/resbaz/Intro_Python_Nov2017/blob/master/Python_Installation.md) on how to do this. 
 
 If using Jupyter Notebooks in Colab you can execute the following line on an empty code cell to import any Python library:
 
