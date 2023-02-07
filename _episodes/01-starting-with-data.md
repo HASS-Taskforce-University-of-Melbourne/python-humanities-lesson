@@ -226,8 +226,8 @@ type(eebo_df)
 # this does the same thing as the above!
 eebo_df.__class__
 ```
-We can also enter `eebo_df.dtypes` at our prompt to view the data type for each
-column in our DataFrame. `int64` represents numeric integer values - `int64` cells
+We can enter `eebo_df.dtypes` at our prompt to view the data type *for each
+column* in our DataFrame. `int64` represents numeric integer values - `int64` cells
 can not store decimals. `object` represents strings (letters and numbers). `float64`
 represents numbers with decimals.
 
@@ -259,7 +259,7 @@ To access an attribute, input the DataFrame object name followed by a dot `.` an
 ```python
 eebo_df.columns
 ```
-As we will see later, we can use the contents of the Index object to extract (slice) records from our DataFrame based on their particular values.
+As we will see later, we can use the contents of the Index object to extract (slice) records from our DataFrame based on their values.
 
 Methods are called by using the syntax `df_object.method()`. Note the inclusion of open brackets at the end of the method. Python treats methods as **functions** associated with a dataframe rather than just a property of the object as with attributes. Similarly to functions, methods can include optional parameters inside the brackets to change their default behaviour.
 
