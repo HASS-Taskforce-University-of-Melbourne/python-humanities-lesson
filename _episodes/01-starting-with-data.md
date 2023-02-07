@@ -482,8 +482,7 @@ We can plot our summary stats using Pandas, too.
 place_count = eebo_df.groupby("Place")["EEBO"].count()
 place_count.plot(kind="bar")
 ```
-
-![Number of works by location](https://github.com/Jair-Garcia-Mendoza/miscellaneous_image_files/blob/f255607f39f3d90ed3f956dcafad21248ef05f78/python_humanities_pandas_fig.png)
+![Stacked Bar Plot](../fig/place_count.png)
 
 What does this graph show? Let's step through
 * `eebo_df.groupby("Place")` 
