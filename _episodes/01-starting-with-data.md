@@ -477,20 +477,20 @@ We can plot our summary stats using Pandas, too.
 # when using a Jupyter notebook, force graphs to appear in line
 %matplotlib inline
 # Collect data together
-date_count = eebo_df.groupby("Date")["Status"].count()
-date_count.plot(kind="bar")
+place_count = eebo_df.groupby("Place")["EEBO"].count()
+place_count.plot(kind="bar")
 ```
 
 ![Weight by Species Plot](python_humanities_pandas_fig.png)
 
 What does this graph show? Let's step through
-* `eebo_df.groupby("Date")` : This groups the texts by the date in which they
+* `eebo_df.groupby("Place")` : This groups the texts by the place where they
 were published
-* `eebo_df.groupby("Date")["Status"]` : This chooses a single column to count,
+* `eebo_df.groupby("Place")["EEBO"]` : This chooses a single column to count,
 rather than counting all columns
-* `eebo_df.groupby("Date")["Status"].count()` : this counts the instances, i.e. 
-how many texts in a given year have a status?
-* `date_count.plot(kind="bar")` : this plots that data as a bar chart
+* `eebo_df.groupby("Place")["EEBO"].count()` : this counts the instances, i.e. 
+how many texts from a given place have EEBO code?
+* `place_count.plot(kind="bar")` : this plots that data as a bar chart
 
 ```
 
