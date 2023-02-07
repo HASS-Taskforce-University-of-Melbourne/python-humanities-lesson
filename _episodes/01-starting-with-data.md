@@ -191,7 +191,7 @@ In a terminal window the above command yields the **output** below. However, thi
 [148 rows x 11 columns]
 ```
 
-We can see that there were 149 rows parsed. Each row has 11
+We can see that there were 149 rows *parsed* (read from the source file and copied into your computer). Each row has 11
 columns. The first column displayed is the **index** of the DataFrame. The index is used to
 identify the position of the data, but it is not an actual column of the DataFrame.
 It looks like  the `read_csv` function in Pandas  read our file properly. However,
