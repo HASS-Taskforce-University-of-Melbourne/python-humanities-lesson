@@ -261,7 +261,7 @@ eebo_df.columns
 ```
 As we will see later, we can use the contents of the Index object to extract (slice) records from our DataFrame based on their values.
 
-Methods are called by using the syntax `df_object.method()`. Note the inclusion of open brackets at the end of the method. Python treats methods as **functions** associated with a dataframe rather than just a property of the object as with attributes. Similarly to functions, methods can include optional parameters inside the brackets to change their default behaviour.
+Methods are called by using the syntax `df_object.method()`. Note the inclusion of open brackets at the end of the method. Python treats methods as **functions** associated with a dataframe rather than just a property of the object as with attributes. Similarly, methods can include optional parameters inside the brackets to change their default behaviour.
 
 As an example, `eebo_df.head()` gets the first few rows in the DataFrame
 `eebo_df` using **the `head()` method**. With a method, we can supply extra
@@ -288,8 +288,8 @@ Let's look at the data using this method.
 
 We've read our data into Python. Next, let's perform some quick summary
 statistics to learn more about the data that we're working with. We might want
-to know how many different authors are included in our dataset, or how many works were published in a given year. We can perform summary stats quickly using groups. But
-first we need to figure out what we want to group by.
+to know how many different authors are included in our dataset, or how many works were published each year. We can perform summary stats quickly using groups. But
+first, we need to figure out what we want to group by.
 
 Let's begin by exploring our data:
 
