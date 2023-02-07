@@ -110,7 +110,7 @@ If using Jupyter Notebooks in Colab you can execute the following line on an emp
 ``` python
 !pip install libraryname
 ```
-If the requested library is already installed, Python will let you know this by returning the version number of the installed library. You can always verfy if Colab has already access to a library by typing
+If the requested library is already installed, Python will let you know this by returning the version number of the library installed in your system. You can always verfy if Colab has already access to a library by typing
 
 ```python
 !pip freeze
@@ -118,11 +118,11 @@ If the requested library is already installed, Python will let you know this by 
 This command will return all libraries available to Colab at the time of execution.
 
 ## Pandas in Python
-One of the best options for working with tabular data in Python is to use the
+One of the best options for working with tabular (data sorted in a table) data in Python is to use the
 [Python Data Analysis Library](http://pandas.pydata.org/) (a.k.a. Pandas Library). The
-Pandas library provides structures to sort our data, can produce high quality plots in conjunction with other libraries such as
+Pandas library provides structures to organise and sort our data, can produce high quality plots in conjunction with other libraries such as
 [matplotlib](http://matplotlib.org/), and integrates nicely with libraries
-that use [NumPy](http://www.numpy.org/) (which is another common Python library) numerical arrays.
+that use [NumPy](http://www.numpy.org/) numerical arrays.
 
 To call the Pandas libraries with its common `pd` alias we type
 
