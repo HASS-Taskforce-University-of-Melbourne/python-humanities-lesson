@@ -486,14 +486,10 @@ place_count.plot(kind="bar")
 ![Number of works by location](https://github.com/Jair-Garcia-Mendoza/miscellaneous_image_files/blob/f255607f39f3d90ed3f956dcafad21248ef05f78/python_humanities_pandas_fig.png)
 
 What does this graph show? Let's step through
-* `eebo_df.groupby("Place")` : This groups the texts by the place where they
-were published
-* `eebo_df.groupby("Place")["EEBO"]` : This chooses a single column to count,
-rather than counting all columns
-* `eebo_df.groupby("Place")["EEBO"].count()` : this counts the instances, i.e. 
-how many texts from a given place have EEBO code?
-* `place_count.plot(kind="bar")` : this plots that data as a bar chart
-
+* `eebo_df.groupby("Place")` 
+* `eebo_df.groupby("Place")["EEBO"]` 
+* `eebo_df.groupby("Place")["EEBO"].count()`
+* `place_count.plot(kind="bar")`
 ```
 
 > ## Challenge - Plots
@@ -546,35 +542,4 @@ expect it to look?
 > Start by transforming the grouped data into an unstacked layout, then create
 > a stacked plot.
 >
->
->> ## Solution to Summary Challenge
->>
->> First we group data by date and then by place. 
->>
->> ```python
->> date_place = eebo_df.groupby(['Date','Place'])
->> page_sum = date_place['Page Count'].sum()
->> ```
->>
->> This calculates the sums for each place, for each date, as a table
->>
->> ```
->> page_sum
->> Date    Place
->> 1515    London    302
->> 1519    Londini   74
->> 1526     London   150
->> 1528    London    386
->> <other plots removed for brevity>
->> ```
->> 
->> After that, we use the `.unstack()` function on our grouped data to figure
->> out the total contribution of each place, to each year, and then plot the
->> data
->> ```python
->> table = page_sum.unstack()
->> plot = table.plot(kind="bar", stacked=True, title="Pages published per year", figsize=(10,5))
->> plot.set_ylabel("Pages")
->> ```
-> {: .solution}
 {: .challenge}
