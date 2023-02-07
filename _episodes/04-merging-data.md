@@ -103,16 +103,7 @@ new_output = pd.read_csv('out.csv', keep_default_na=False, na_values=[""])
 >
 > In the data folder, there are two catalogue data files: `1635.csv` and
 > `1640.csv`. Read the data into python and combine the files to make one
-> new data frame. 
->
->> ## Solution to Challenge
->> 
->> ```python
->>  csv_1 = pd.read_csv("1635.csv")
->>  csv_2 = pd.read_csv("1640.csv")
->>  combined = pd.concat( [csv_1, csv_2], axis=0).reset_index(drop=True)
->>  ```
-> {: .solution}
+> new data frame.
 {: .challenge}
 
 # Joining DataFrames
