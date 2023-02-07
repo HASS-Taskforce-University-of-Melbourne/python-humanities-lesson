@@ -123,8 +123,6 @@ The `places.csv` file is table that contains the place and EEBO id for some titl
 When we want to access that information, we can create a query that joins the additional 
 columns of information to the author data.
 
-Storing data in this way has many benefits including:
-
 
 ## Identifying join keys
 
@@ -170,9 +168,7 @@ The pandas function for performing joins is called `merge` and an Inner join is
 the default option:  
 
 ```python
-merged_inner = pd.merge(left=authors_df,right=places_df, left_on='TCP', right_on='TCP')
-# in this case `species_id` is the only column name in  both dataframes, so if we skippd `left_on`
-# and `right_on` arguments we would still get the same result
+merged_inner = pd.merge(authors_df, places_df, on='TCP')
 
 # what's the size of the output data?
 merged_inner.shape
@@ -192,29 +188,15 @@ merged_inner
 
 The result of an inner join of `authors_df` and `places_df` is a new DataFrame
 that contains the combined set of columns from those tables. It
-*only* contains rows that have two-letter species codes that are the same in
-both the `authos_df` and `place_df` DataFrames. In other words, if a row in
-`authors_df` has a value of `TCP` that does *not* appear in the `TCP`
-column of `TCP`, it will not be included in the DataFrame returned by an
+*only* contains rows that are the same in both the `authors_df` and `place_df` DataFrames. So, if a row in
+`authors_df` has a value of `TCP` that does *not* appear in `places_df`, it will not be included in the DataFrame returned by an
 inner join.  Similarly, if a row in `places_df` has a value of `TCP`
-that does *not* appear in the `TCP` column of `places_df`, that row will not
+that does *not* appear in the `TCP` column of `authors_df`, that row will not
 be included in the DataFrame returned by an inner join.
-
-The two DataFrames that we want to join are passed to the `merge` function using
-the `left` and `right` argument. The `left_on='TCP'` argument tells `merge`
-to use the `TCP` column as the join key from `places_df` (the `left`
-DataFrame). Similarly , the `right_on='TCP'` argument tells `merge` to
-use the `TCP` column as the join key from `authors_df` (the `right`
-DataFrame). For inner joins, the order of the `left` and `right` arguments does
-not matter.
 
 The result `merged_inner` DataFrame contains all of the columns from `authors`
 (TCP, Person) as well as all the columns from `places_df`
 (TCP, Place).
-
-Notice that `merged_inner` has fewer rows than `place_sub`. This is an
-indication that there were rows in `place_df` with value(s) for `EEBO` that
-do not exist as value(s) for `EEBO` in `authors_df`.
 
 ## Left joins
 
@@ -232,47 +214,14 @@ for those columns in the resulting joined DataFrame.
 Note: a left join will still discard rows from the `right` DataFrame that do not
 have values for the join key(s) in the `left` DataFrame.
 
-![Left Join](http://blog.codinghorror.com/content/images/uploads/2007/10/6a0120a85dcdae970b01287770273e970c-pi.png)
-
-A left join is performed in pandas by calling the same `merge` function used for
-inner join, but using the `how='left'` argument:
-
-```python
-merged_left = pd.merge(left=places_df,right=authors_df, how='left', left_on='TCP', right_on='TCP')
-merged_left
-
-**OUTPUT:**
-      TCP             Place                                             Author
-0  A00002            London                         Aylett, Robert, 1583-1655?
-1  A00005            London  Higden, Ranulf, d. 1364. Polycronicon. English...
-2  A00007            London             Higden, Ranulf, d. 1364. Polycronicon.
-3  A00008  The Netherlands?          Wood, William, fl. 1623, attributed name.
-4  A00011         Amsterdam                                                NaN
-```
-
-The result DataFrame from a left join (`merged_left`) looks very much like the
-result DataFrame from an inner join (`merged_inner`) in terms of the columns it
-contains. However, unlike `merged_inner`, `merged_left` contains the **same
-number of rows** as the original `place_sub` DataFrame. When we inspect
-`merged_left`, we find there are rows where the information that should have
-come from `authors_df` (i.e., `Author`) is missing (they contain NaN values):
-
-```python
- merged_inner[ pd.isnull(merged_inner.Author) ]
-**OUTPUT:**
-        TCP Author      Place
-4    A00011    NaN  Amsterdam
-6    A00014    NaN     London
-8    A00018    NaN   Germany?
-```
-
-These rows are the ones where the value of `Author` from `authors_df` does not occur in `places_df`.
-
 
 ## Other join types
 
 The pandas `merge` function supports two other join types:
 
+* Left join: Invoked by passing `how='left'` as an argument. All* rows from the `left` DataFrame are kept, while
+  rows from the `right` DataFrame without matching join key(s) values are
+  discarded.
 * Right (outer) join: Invoked by passing `how='right'` as an argument. Similar
   to a left join, except *all* rows from the `right` DataFrame are kept, while
   rows from the `left` DataFrame without matching join key(s) values are
