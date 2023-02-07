@@ -408,12 +408,9 @@ summary stats.
 
 > ## Challenge - Summary Data
 >
-> 1. What is the mean page length for books published in `Amsterdam` and how many for `London`
-> 2. What happens when you group by two columns using the following syntax and
->    then grab mean values:
->	- `grouped_data2 = eebo_df.groupby(['EEBO','Page Count'])`
->	- `grouped_data2.mean()`
-> 3. Summarize the Date values in your data. HINT: you can use the
+> 1. What is the mean page length for books published in `Amsterdam` and how many for `Antwerp` (Make sure to check your spellings)
+> 2. Group the book by their place of publication and the year they were published.
+> 3. Summarise the Date values in your data. HINT: you can use the
 >   following syntax to only create summary statistics for one column in your data
 >   `eebo_df['Page Count'].describe()`
 >
@@ -448,7 +445,7 @@ author_counts = eebo_df.groupby('Author')['EEBO'].count()
 print(author_counts)
 ```
 
-Or, we can also count just the rows that have the author "A. B.":
+Or, we can also count just the rows that have the author "Aylett, Robert":
 
 ```python
 eebo_df.groupby('Author')['EEBO'].count()['Aylett, Robert, 1583-1655?']
@@ -456,9 +453,8 @@ eebo_df.groupby('Author')['EEBO'].count()['Aylett, Robert, 1583-1655?']
 
 > ## Challenge - Make a list
 >
->  What's another way to create a list of authors and associated `count` of the
->  records in the data? Hint: you can perform `count`, `min`, etc functions on
->  groupby DataFrames in the same way you can perform them on regular DataFrames.
+>  Create a new dataframe from eebo_df consist of authors with their associated `count` of the
+>  records in the data? 
 {: .challenge}
 
 ## Basic Math Functions
@@ -468,6 +464,12 @@ normalize the page number of each work in our data according to the mean of the 
 
 	# multiply all page length values by 2
 	eebo_df['Page Count']*2
+
+> ## Challenge - Make a list
+>
+>  Remember the floor division that Mar taught you last week? This time, I want you to perform a floor division on the ['Page Count'] column.
+{: .challenge}
+
 
 # Quick & Easy Plotting Data Using Pandas
 
