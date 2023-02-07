@@ -46,11 +46,6 @@ places_df
 5   A00014                         London
 
 ```
-
-Take note that the `read_csv` method we used can take some additional options which
-we didn't use previously. Many functions in python have a set of options that
-can be set by the user if needed. In this case, we have told Pandas to assign
-empty values in our CSV to NaN `keep_default_na=False, na_values=[""]`.
 [More about all of the read_csv options here.](http://pandas.pydata.org/pandas-docs/dev/generated/pandas.io.parsers.read_csv.html)
 
 # Concatenating DataFrames
@@ -68,15 +63,6 @@ place_sub_last10 = places_df.tail(20)
 place_sub_last10 = place_sub_last10.reset_index(drop=True)
 # drop=True option avoids adding new index column with old index values
 ```
-
-When we concatenate DataFrames, we need to specify the axis. `axis=0` tells
-Pandas to stack the second DataFrame under the first one. It will automatically
-detect whether the column names are the same and will stack accordingly.
-`axis=1` will stack the columns in the second DataFrame to the RIGHT of the
-first DataFrame. To stack the data vertically, we need to make sure we have the
-same columns and associated column format in both datasets. When we stack
-horizonally, we want to make sure what we are doing makes sense (ie the data are
-related in some way).
 
 ```python
 # stack the DataFrames on top of each other
