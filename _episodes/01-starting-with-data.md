@@ -56,7 +56,7 @@ from EEBO/TCP
 We will be downloading files from a remote location identifiable by an URL address.
 This section will use the `eebo.csv` file that can be found at https://raw.githubusercontent.com/carpentries-incubator/python-humanities-lesson/gh-pages/data/eebo.csv 
 
-We are studying a simple database containing the authors and titles of works marked up by the Text Creation Partnership. The dataset is stored as a comma separated (`.csv`) file, where each row holds information for a single title, and the columns represent diferent aspects (variables) of each entry. The **codebook** (often read.me file) accompanying the data give us a description of the variables (features) included in our data file.
+We are studying a simple database containing the authors and titles of works marked up by the Text Creation Partnership. The dataset is stored as a comma separated (`.csv`) file, where each row holds information for a single title, and the columns represent different aspects (variables) of each entry. The **codebook** (often read.me file) accompanying the data give us a description of the variables (features) included in our data file.
 
 | Column           | Description                                     |
 |------------------|-------------------------------------------------|
