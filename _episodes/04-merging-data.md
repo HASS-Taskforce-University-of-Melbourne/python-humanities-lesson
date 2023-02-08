@@ -23,7 +23,11 @@ surveys files into pandas DataFrames. The authors.csv and places.csv data can be
 
 ```python
 import pandas as pd
-authors_df = pd.read_csv("authors.csv",
+
+author_link = "https://raw.githubusercontent.com/carpentries-incubator/python-humanities-lesson/gh-pages/data/authors.csv"
+places_link = "https://raw.githubusercontent.com/carpentries-incubator/python-humanities-lesson/gh-pages/data/places.csv"
+
+authors_df = pd.read_csv(author_link,
                          keep_default_na=False, na_values=[""])
 authors_df
 
@@ -34,7 +38,7 @@ authors_df
 3    A00008          Wood, William, fl. 1623, attributed name.
 4    A00011
 
-places_df = pd.read_csv("places.csv",
+places_df = pd.read_csv(places_link,
                          keep_default_na=False, na_values=[""])
 places_df
     A00002                         London
