@@ -202,23 +202,6 @@ The result `merged_inner` DataFrame contains all of the columns from `authors`
 (TCP, Person) as well as all the columns from `places_df`
 (TCP, Place).
 
-## Left joins
-
-What if we want to add information from `cat_sub` to `survey_sub` without
-losing any of the information from `survey_sub`? In this case, we use a different
-type of join called a "left outer join", or a "left join".
-
-Like an inner join, a left join uses join keys to combine two DataFrames. Unlike
-an inner join, a left join will return *all* of the rows from the `left`
-DataFrame, even those rows whose join key(s) do not have values in the `right`
-DataFrame.  Rows in the `left` DataFrame that are missing values for the join
-key(s) in the `right` DataFrame will simply have null (i.e., NaN or None) values
-for those columns in the resulting joined DataFrame.
-
-Note: a left join will still discard rows from the `right` DataFrame that do not
-have values for the join key(s) in the `left` DataFrame.
-
-
 ## Other join types
 
 The pandas `merge` function supports two other join types:
@@ -244,30 +227,4 @@ The pandas `merge` function supports two other join types:
 > 1. Number of unique places
 > 2. Number of books that do not have a known place
 > 3. Number of books that do not have either a known place or author
->
->> ## Solution to challenge
->> 
->> 
->> ```python
->> merged = pd.merge(
->>                   left=pd.read_csv("authors.csv"),
->>                   right=pd.read_csv("places.csv"),
->>                   left_on="TCP",
->>                   right_on="TCP"
->>                   )
->> # Part 1: number of unique places - we can use the .nunique() method
->> num_unique_places = merged["Place"].nunique()
->> # Part 2: we can take advantage of the behaviour that the .count() method
->> #         excludes NaN values. So .count() gives us the number that have place
->> #         values
->> num_no_place = len(merged) - merged["Place"].count()
->> # Part 3: This needs us to check both columns and combine the resulting masks
->> #         Then  we can use the trick of converting boolean to int, and summing, 
->> #         to convert the combined mask to a number of True values
->> no_author = pd.isnull(merged["Author"]) # True where is null
->> no_place = pd.isnull(merged["Place"])
->> neither = no_author & no_place
->> num_neither = sum(neither)
->> ```
-> {: .solution}
 {: .challenge}
