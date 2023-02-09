@@ -218,7 +218,7 @@ which prints contents like above
 ## Manipulating Our Index Data
 
 Now we can start manipulating our data. First, let's check the type of the
-data stored in teh variable `eebo_df` using the `type` function. **The `type` function and
+data stored in the variable `eebo_df` using the `type` function. **The `type` function and
 `__class__` attribute** of the Dataframe tell us that `eebo_df` is `<class 'pandas.core.frame.DataFrame'>`.
 
 ```python
